@@ -10,9 +10,9 @@ function Recommendations() {
   const [recommendation, setRecommendation] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // ✅ Fetch ALL coins
+  // ✅ Fetch top 1250 coins (5 pages × 250 per page)
   useEffect(() => {
-    const fetchAllCoins = async () => {
+    const fetchCoins = async () => {
       try {
         const cached = localStorage.getItem("crypto_coins_cache");
         if (cached) {
@@ -25,42 +25,28 @@ function Recommendations() {
           }
         }
 
-        // Get all coins (id, name, symbol)
-        const res = await fetch("https://api.coingecko.com/api/v3/coins/list");
-        const allCoins = await res.json();
-
-        // Get market data for top 250 coins
-        const marketRes = await fetch(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1"
-        );
-        const marketData = await marketRes.json();
-
-        // Merge: enrich all coins with market info if available
-        const enriched = allCoins.map((coin) => {
-          const marketCoin = marketData.find((m) => m.id === coin.id);
-          return {
-            ...coin,
-            image: marketCoin?.image || null,
-            current_price: marketCoin?.current_price || null,
-            market_cap: marketCoin?.market_cap || null,
-            price_change_percentage_24h:
-              marketCoin?.price_change_percentage_24h || null,
-          };
-        });
+        let allCoins = [];
+        for (let page = 1; page <= 5; page++) {
+          const res = await fetch(
+            `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=${page}`
+          );
+          const data = await res.json();
+          allCoins = [...allCoins, ...data];
+        }
 
         localStorage.setItem(
           "crypto_coins_cache",
-          JSON.stringify({ data: enriched, timestamp: Date.now() })
+          JSON.stringify({ data: allCoins, timestamp: Date.now() })
         );
 
-        setCoins(enriched);
-        console.log(`✅ Fetched ${enriched.length} coins`);
+        setCoins(allCoins);
+        console.log(`✅ Fetched ${allCoins.length} coins`);
       } catch (err) {
         console.error("Error fetching coins:", err);
       }
     };
 
-    fetchAllCoins();
+    fetchCoins();
   }, []);
 
   // ✅ Analyze selected coin
@@ -133,7 +119,9 @@ Coin Details:
       }
     } catch (err) {
       console.error("Gemini API Error:", err);
-      setRecommendation("❌ Could not fetch recommendation. Please try again later.");
+      setRecommendation(
+        "❌ Could not fetch recommendation. Please try again later."
+      );
     } finally {
       setLoading(false);
     }
@@ -178,26 +166,18 @@ Coin Details:
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  {coin.image ? (
-                    <img
-                      src={coin.image}
-                      alt={coin.name}
-                      className="w-6 h-6 rounded-full"
-                    />
-                  ) : (
-                    <div className="w-6 h-6 rounded-full bg-gray-600"></div>
-                  )}
+                  <img
+                    src={coin.image}
+                    alt={coin.name}
+                    className="w-6 h-6 rounded-full"
+                  />
                   <span className="font-medium">
                     {coin.name} ({coin.symbol.toUpperCase()})
                   </span>
                 </div>
-                {coin.current_price ? (
-                  <span className="font-semibold">
-                    ${coin.current_price.toLocaleString()}
-                  </span>
-                ) : (
-                  <span className="text-gray-500">N/A</span>
-                )}
+                <span className="font-semibold">
+                  ${coin.current_price.toLocaleString()}
+                </span>
               </div>
             ))}
           </div>
