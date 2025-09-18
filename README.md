@@ -8,7 +8,7 @@ This project is ideal for:
 - 📈 **Crypto traders & investors** who want AI-powered insights and the latest market updates  
 - 🧑‍💻 **Developers & learners** exploring how to integrate **multiple APIs** (CoinGecko, Gemini, News API) in a **React + Node.js + Tailwind** stack
 
-![](https://imgflip.com/gif/a6frzh)
+![](https://new.express.adobe.com/publishedV2/urn:aaid:sc:AP:51590be1-d35b-430f-8c2f-58da329f4768?promoid=Y69SGM5H&mv=other)
 
 
 # ✨ Features
