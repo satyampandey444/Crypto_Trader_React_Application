@@ -76,8 +76,8 @@ crypto_Trader/
 │   ├── main.jsx                    # React entry point
 │   └── routes.jsx                  # All routes defined here
 │
-├── .env.example                     # Example env file (no real key)
-│                                    # e.g. VITE_GEMINI_API_KEY=your_key_here
+├── .env                            # Your API 
+│                                    
 │
 ├── .gitignore                       # Ignore node_modules, .env, build files
 ├── package.json                     # Dependencies and scripts
