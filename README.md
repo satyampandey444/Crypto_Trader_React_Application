@@ -47,4 +47,47 @@ GET GET https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=YOUR_API_KEY
 ```
 
 
+## Folder Structure
+```
+crypto_Trader/
+│
+├── public/                         # Static assets
+│   ├── favicon.ico
+│   ├── index.html
+│   └── vite.svg
+│
+├── src/                            # Main source code
+│   ├── assets/                     # Local images, logos, icons
+│   ├── components/                 # Reusable components
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   └── CoinCard.jsx
+│   │
+│   ├── pages/                      # Page-level components
+│   │   ├── HomePage.jsx
+│   │   ├── Exchanges.jsx
+│   │   ├── News.jsx
+│   │   └── Recommendations.jsx
+│   │
+│   ├── styles/                     # Custom CSS/Tailwind configs
+│   │   └── globals.css
+│   │
+│   ├── App.jsx                     # Root app component
+│   ├── main.jsx                    # React entry point
+│   └── routes.jsx                  # All routes defined here
+│
+├── .env.example                     # Example env file (no real key)
+│                                    # e.g. VITE_GEMINI_API_KEY=your_key_here
+│
+├── .gitignore                       # Ignore node_modules, .env, build files
+├── package.json                     # Dependencies and scripts
+├── vite.config.js                   # Vite config
+├── tailwind.config.js               # Tailwind config
+├── postcss.config.js                # PostCSS config
+├── README.md                        # Project documentation
+└── LICENSE                          # (optional) Open-source license
+
+```
+
+
 
