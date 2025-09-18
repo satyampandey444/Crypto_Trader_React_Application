@@ -14,7 +14,12 @@ This project is ideal for:
   <img src="./crypto_trader.gif" alt="App Demo" width="75%" />
 </p>
 
+## Images
 
+<p align="center">
+  <img src="./assets/ss1.png" alt="Screenshot 1" width="45%" />
+  <img src="./assets/ss2.png" alt="Screenshot 2" width="45%" />
+</p>
 
 
 
