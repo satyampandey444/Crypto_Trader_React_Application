@@ -17,7 +17,7 @@ This project is ideal for:
 ## Images
 
 <p align="center">
-  <img src="./assets/ss1.png" alt="Screenshot 1" width="45%" />
+  <img src="./Recommendation_Page.png" alt="Reccomendatioon" width="45%" />
   <img src="./assets/ss2.png" alt="Screenshot 2" width="45%" />
 </p>
 
