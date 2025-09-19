@@ -14,11 +14,18 @@ This project is ideal for:
   <img src="./crypto_trader.gif" alt="App Demo" width="75%" />
 </p>
 
-## Images
+## Dashboard & Charts
+
+<p align="center">
+  <img src="./Dashboard.png" alt="Dashboard" width="45%" />
+  <img src="./Charts.png" alt="Charts" width="45%" />
+</p>
+
+## Reccomendation & News
 
 <p align="center">
   <img src="./Reccomendation_Page.png" alt="Reccomendation" width="45%" />
-  <img src="./assets/ss2.png" alt="Screenshot 2" width="45%" />
+  <img src="./News_Page.png" alt="News" width="45%" />
 </p>
 
 
